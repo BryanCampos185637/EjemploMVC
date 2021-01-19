@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .card {
+        box-shadow:2px 2px 5px #999 !important;
+    }
+</style>
+<br />
+<div class="row" id="div-card">
+
+</div>
+<script src="~/Content/jquery.min.js"></script>
+<script>
+    window.onload = function () {
+        pintarCards('/catalogo/listarProducto', document.getElementById('div-card'))
+    }
+    function pintarCards(url, div) {
+        $.get(url, function (data) {
+            var html = '';
+            $.each(data, function (key, item) {
+                html+='<div class="col-lg-4 mb-4">'
+                html +='<div class="card">'
+                html +='<div class="card-header">'
+                html += '<h5>' + item.DESCRIPCION + '</h5>'
+                html +='</div>'
+                html +='<div class="card-body">'
+                html += '<img class="card-img" src="' + item.IMAGEN + '"/>'
+                html += '<span>Categoria: ' + item.NOMBRECATEGORIA + '</span><br>'
+                html += '<span>Precio: $' + item.PRECIO.toFixed(2) + '</span>'
+                html +='</div>'
+                html +='</div>'
+                html +='</div>'
+            })
+            div.innerHTML = html;
+        })
+    }
+</script>

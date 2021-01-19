@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>PRODUCTO</h2>
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h5>Formulario producto</h5>
+            </div>
+            <div class="card-body">
+                <input type="hidden" id="IDPRODUCTO" name="IDPRODUCTO" class="data" />
+                <div class="form-group">
+                    <img alt="Foto del producto" id="IMAGEN" class="card-img" />
+                    <button class="btn-sm btn-success" id="btnFoto">Buscar</button>
+                </div>
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <input type="text" name="DESCRIPCION" id="DESCRIPCION" class="form-control data requerid" />
+                </div>
+                <div class="form-group">
+                    <label>Precio</label>
+                    <input type="text" name="PRECIO" id="PRECIO" class="form-control data requerid" />
+                </div>
+                <div class="form-group">
+                    <label>Categoria</label>
+                    <select id="IDCATEGORIA" class="form-control data requerid" name="IDCATEGORIA"></select>
+                </div>
+                <div style="display:none">
+                    <input type="file" class="form-control" id="txtFileFoto" />
+                </div>
+            </div>
+            <div class="card-footer">
+                <button onclick="guardar()" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8" id="myTable">
+        <span>Cargando productos...</span>
+    </div>
+</div>
+
+<script src="~/Content/jquery.min.js"></script>
+<script src="~/Content/AJAX/generic.js"></script>
+<script src="~/Content/AJAX/producto.js"></script>
